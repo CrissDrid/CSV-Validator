@@ -217,6 +217,11 @@ const CSVUploadModal = ({ visible, onCancel, onUpload }) => {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div>
+            <Title level={5}>Requisitos del archivo</Title>
+            <ValidationRequirements validationResults={validationResults} />
+          </div>
+
+          <div>
             <Title level={5}>Selecciona un archivo CSV para importar</Title>
             <Dragger {...draggerProps}>
               <p className="ant-upload-drag-icon">
@@ -229,11 +234,6 @@ const CSVUploadModal = ({ visible, onCancel, onUpload }) => {
                 Solo se permiten archivos en formato CSV
               </p>
             </Dragger>
-          </div>
-          
-          <div>
-            <Title level={5}>Requisitos del archivo</Title>
-            <ValidationRequirements validationResults={validationResults} />
           </div>
         </div>
       );

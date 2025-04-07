@@ -75,7 +75,7 @@ export const validateCSVFile = async (file) => {
         if (semicolonCount === 0) {
           // Sin puntos y coma, definitivamente incorrecto
           validationResults.hasSemicolonSeparator.status = 'error';
-        } else if (pipeCount > 0 || commaCount > semicolonCount || tabCount > semicolonCount) {
+        } else if (pipeCount > semicolonCount || commaCount > semicolonCount || tabCount > semicolonCount) {
           // Si hay pipes o hay más comas o más tabs que puntos y coma
           validationResults.hasSemicolonSeparator.status = 'error';
         } else {

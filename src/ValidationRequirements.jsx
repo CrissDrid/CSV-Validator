@@ -1,47 +1,32 @@
 import React from 'react';
 import { List, Typography, Space } from 'antd';
-import { 
-  CheckCircleOutlined, 
-  ExclamationCircleOutlined, 
-  ClockCircleOutlined 
-} from '@ant-design/icons';
+import { CheckCircleOutlined, WarningOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 
 const { Text } = Typography;
 
 const ValidationRequirements = ({ validationResults }) => {
   const getIcon = (status) => {
     switch (status) {
-      case 'success':
-        return <CheckCircleOutlined style={{ color: '#52c41a' }} />;
-      case 'error':
-        return <ExclamationCircleOutlined style={{ color: '#f5222d' }} />;
-      case 'pending':
-      default:
-        return <ClockCircleOutlined style={{ color: '#faad14' }} />;
+        case 'success':
+            return <CheckCircleOutlined style={{ color: '#76C35E'}}/>
+        case 'error':
+            return <WarningOutlined style={{ color: '#f5222d'}}/>
+        case 'pending':
+            return <ExclamationCircleOutlined style={{ color: '#3287b2'}}/>
+        default:
+            return <ExclamationCircleOutlined style={{ color: '#3287b2'}}/>
     }
-  };
-
-  const getTextStyle = (status) => {
-    switch (status) {
-      case 'success':
-        return { color: '#52c41a' };
-      case 'error':
-        return { color: '#f5222d' };
-      case 'pending':
-      default:
-        return { color: '#faad14' };
-    }
-  };
+}
 
   return (
     <List
-      bordered
+      bordered = {false}
       dataSource={Object.entries(validationResults)}
       renderItem={([key, { status, message }]) => (
-        <List.Item>
+        <List.Item style={{ border: 'none' }}>
           <Space>
             {getIcon(status)}
-            <Text style={getTextStyle(status)}>{message}</Text>
+            <Text>{message}</Text>
           </Space>
         </List.Item>
       )}
